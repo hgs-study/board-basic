@@ -1,0 +1,9 @@
+POST http://localhost:8080/posts
+Content-Type: application/json
+
+{
+  "title" : "게시물 제목",
+  "content" : "게시물 내용"
+}
+
+### "message": "정상적으로 등록되었습니다."
