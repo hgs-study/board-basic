@@ -12,8 +12,6 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-@DynamicInsert
-@DynamicUpdate
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
