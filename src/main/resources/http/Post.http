@@ -5,5 +5,109 @@ Content-Type: application/json
   "title" : "게시물 제목",
   "content" : "게시물 내용"
 }
+### 게시물 등록
+# HTTP/1.1 201
+#
+# "message": "정상적으로 등록되었습니다."
+###
 
-### "message": "정상적으로 등록되었습니다."
+GET http://localhost:8080/posts
+
+### 리스트 조회
+#Status
+#HTTP/1.1 200
+#
+#Response
+#[
+#  {
+#    "id": 1,
+#    "title": "게시물 제목",
+#    "content": "게시물 내용"
+#  },
+#  {
+#    "id": 2,
+#    "title": "게시물 제목",
+#    "content": "게시물 내용"
+#  }
+#]
+###
+
+GET http://localhost:8080/posts/1
+
+### 게시물 조회
+#Status
+#HTTP/1.1 200
+#
+#Response
+#{
+#  "id": 1,
+#  "title": "게시물 제목",
+#  "content": "게시물 내용"
+#}
+###
+
+PUT http://localhost:8080/posts/1
+Content-Type: application/json
+
+{
+  "title" : "게시물 수정했습니다",
+  "content" : "게시물 수정했습니다"
+}
+
+### 게시물 수정
+#Status
+#HTTP/1.1 200
+#
+#Response
+#{
+#  "message": "1번 게시글이 정상적으로 수정되었습니다."
+#}
+#
+#FindAll
+#[
+#  {
+#    "id": 1,
+#    "title": "게시물 수정했습니다",
+#    "content": "게시물 수정했습니다"
+#  },
+#  {
+#    "id": 2,
+#    "title": "게시물 제목",
+#    "content": "게시물 내용"
+#  }
+#]
+#
+#Exception
+#{
+#  "status": 400,
+#  "code": "P004001",
+#  "message": "해당 글을 찾을 수 없습니다."
+#}
+###
+
+DELETE http://localhost:8080/posts/1
+
+### 게시물 삭제
+#Status
+#HTTP/1.1 200
+#
+#Response
+#{
+#  "message": "1번 게시글이 정상적으로 삭제되었습니다."
+#}
+#
+#FindAll
+#[
+#  {
+#    "id": 2,
+#    "title": "게시물 제목",
+#    "content": "게시물 내용"
+#  }
+#]
+#
+#Exception
+#{
+#  "status": 400,
+#  "code": "P004001",
+#  "message": "해당 글을 찾을 수 없습니다."
+#}
