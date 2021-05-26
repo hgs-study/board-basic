@@ -1,0 +1,153 @@
+POST http://localhost:8080/accounts
+Content-Type: application/json
+
+{
+  "email": "hyun@gmail.com",
+  "password": "asdasd11"
+}
+### 계정 등록
+# HTTP/1.1 201
+#
+#Response
+# "message": "정상적으로 등록되었습니다."
+#
+#find
+#{
+#  "id": 1,
+#  "email": "hyun@gmail.com",
+#  "password": "asdasd11"
+#}
+#
+#Exception
+#{
+#  "message": "이메일 형식으로 입력해주세요."
+#}
+#{
+#  "message": "비밀번호는 영어와 숫자로 포함해서 8~12자리 이내로 입력해주세요."
+#}
+###
+
+GET http://localhost:8080/accounts
+
+### 리스트 조회
+#Status
+#HTTP/1.1 200
+#
+#Response
+#[
+#  {
+#    "id": 1,
+#    "email": "hyun@gmail.com",
+#    "password": "asdasd11"
+#  },
+#  {
+#    "id": 2,
+#    "email": "kim@gmail.com",
+#    "password": "asdasd11"
+#  },
+#  {
+#    "id": 3,
+#    "email": "jang@gmail.com",
+#    "password": "asdasd11"
+#  }
+#]
+#Response code: 200; Time: 74ms; Content length: 168 bytes
+###
+
+GET http://localhost:8080/accounts/1
+
+### 계정 조회
+#Status
+#HTTP/1.1 200
+#
+#Response
+#{
+#  "id": 1,
+#  "email": "hyun@gmail.com",
+#  "password": "asdasd11"
+#}
+#Exception
+#{
+#  "status": 400,
+#  "code": "A004001",
+#  "message": "해당 계정을 찾을 수 없습니다."
+#}
+###
+
+PUT http://localhost:8080/accounts/1
+Content-Type: application/json
+
+{
+  "email" : "modifyHyun@gmail.com",
+  "password" : "modify12345"
+}
+
+### 게시물 수정
+#Status
+#HTTP/1.1 200
+#
+#Response
+#{
+#  "message": "1번 계정이 정상적으로 수정되었습니다."
+#}
+#
+#FindAll
+#[
+#  {
+#    "id": 1,
+#    "email": "modifyHyun@gmail.com",
+#    "password": "modify12345"
+#  },
+#  {
+#    "id": 2,
+#    "email": "kim@gmail.com",
+#    "password": "asdasd11"
+#  },
+#  {
+#    "id": 3,
+#    "email": "jang@gmail.com",
+#    "password": "asdasd11"
+#  }
+#]
+#
+#Response code: 200; Time: 39ms; Content length: 177 bytes
+#
+#Exception
+#{
+#  "status": 400,
+#  "code": "A004001",
+#  "message": "해당 계정을 찾을 수 없습니다."
+#}
+###
+
+DELETE http://localhost:8080/accounts/1
+
+### 게시물 삭제
+#Status
+#HTTP/1.1 200
+#
+#Response
+#{
+#  "message": "1번 계정이 정상적으로 삭제되었습니다."
+#}
+#
+#FindAll
+#[
+#  {
+#    "id": 2,
+#    "email": "kim@gmail.com",
+#    "password": "asdasd11"
+#  },
+#  {
+#    "id": 3,
+#    "email": "jang@gmail.com",
+#    "password": "asdasd11"
+#  }
+#]
+#
+#Exception
+#{
+#  "status": 400,
+#  "code": "A004001",
+#  "message": "해당 계정을 찾을 수 없습니다."
+#}
